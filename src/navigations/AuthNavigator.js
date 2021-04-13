@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import routes from '../constants/routes';
 import Contacts from '../screens/Contacts';
 import ContactDetails from '../screens/ContactDetail';
+
 const AuthNavigator = (props) => {
 
     const AuthStack = createStackNavigator();

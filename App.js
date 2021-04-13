@@ -8,17 +8,17 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  Text,
 } from 'react-native';
 
 import AppNavContainer from './src/navigations';
+import GlobalProvider from './src/context/reducers/Providers';
 
 const App = () => {
-
 	return (
-		<AppNavContainer />
+		<GlobalProvider>
+			<AppNavContainer />
+		</GlobalProvider>
 	);
 };
 
