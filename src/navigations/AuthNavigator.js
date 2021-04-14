@@ -3,17 +3,17 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import routes from '../constants/routes';
-import Contacts from '../screens/Contacts';
-import ContactDetails from '../screens/ContactDetail';
+import Login from '../screens/Auth/Login';
+import Register from '../screens/Auth/Register';
 
 const AuthNavigator = (props) => {
 
     const AuthStack = createStackNavigator();
 
     return (
-        <AuthStack.Navigator>
-            <AuthStack.Screen name={routes.LOGIN} component={Contacts}/>
-            <AuthStack.Screen name={routes.REGISTER} component={ContactDetails}/>
+        <AuthStack.Navigator screenOptions={{headerShown: false}}>
+            <AuthStack.Screen name={routes.LOGIN} component={Login}/>
+            <AuthStack.Screen name={routes.REGISTER} component={Register}/>
         </AuthStack.Navigator>
         // <Text> Hello </Text>
     );
