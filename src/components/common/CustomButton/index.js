@@ -2,9 +2,12 @@ import React from 'react';
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import colours from '../../../assets/themes/colours';
 
-function CustomButton({ disabled=false, loading=false, style, textStyle, title }) {
+function CustomButton({ disabled=false, loading=false, onPress, style, textStyle, title }) {
     return (
-        <TouchableOpacity disabled={disabled} style={[style, (disabled ? {backgroundColor: colours.grey} : null)]}>
+        <TouchableOpacity 
+            onPress={onPress}
+            disabled={disabled} 
+            style={[style, (disabled ? {backgroundColor: colours.grey} : null)]}>
             <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                 <Text style={textStyle}>
                     { title }

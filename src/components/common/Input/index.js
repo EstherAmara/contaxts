@@ -16,7 +16,7 @@ const Input = ({
 
     const [focused, setFocused] = useState(false);
     return (
-        <View style={{marginVertical: 15}}>
+        <View style={{marginVertical: 10}}>
             { label && <Text>{ label }</Text> }
             <View style={[styles.container, style, 
                 {
