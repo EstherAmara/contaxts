@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import env from '../../config/env';
 import colours from '../../assets/themes/colours';
 import Container from '../common/Container';
 import CustomButton from '../common/CustomButton';
@@ -14,9 +15,7 @@ function RegisterComponent({
     form,
     errors,
 }) {
-    const onstuff = (value) => {
-        console.log(value);
-    }
+    
     return (
         <Container>
 
@@ -28,50 +27,41 @@ function RegisterComponent({
 
                 <View>
                     <Input
+                        error={errors.username}
                         label='Username'
-                        placeholder='Enter  your username'
-                        onChangeText={(value) => {
-                            onChange({ name: 'userName', value});
-                        }}
-                        error={errors.userName}
+                        placeholder='Enter your username'
+                        name='username'
                     />
 
                     <Input
-                        label='First Name'
-                        placeholder='Enter your First Name'
-                        onChangeText={(value) => {
-                            onChange({name: 'firstName', value})
-                        }}
-                        error={errors.firstName}
+                        error={errors.lastname}
+                        label='Lastname'
+                        placeholder='Enter your lastname'
+                        name='lastname'
+                    />
+                    
+                    <Input
+                        error={errors.firstname}
+                        label='Firstname'
+                        placeholder='Enter your firstname'
+                        name='firstname'
                     />
 
                     <Input
-                        label='Last Name'
-                        placeholder='Enter your Last Name'
-                        onChangeText={(value) => {
-                            onChange({name: 'lastName', value})
-                        }}
-                        error={errors.lastName}
-                    />
-    
-                    <Input
-                        label='Email'
-                        placeholder='Enter your Email'
-                        onChangeText={(value) => {
-                            onChange({name: 'email', value})
-                        }}
                         error={errors.email}
+                        label='Email'
+                        placeholder='Enter your email'
+                        name='email'
                     />
+
                     <Input
+                        error={errors.password}
                         icon={<Text>Show</Text>}
                         iconPosition='right'
                         label='Password'
+                        name='password'
                         placeholder='Enter your password'
                         secureTextEntry={true}
-                        onChangeText={(value) => {
-                            onChange({name: 'password', value})
-                        }}
-                        error={errors.password}
                     />
 
                     <CustomButton
@@ -80,13 +70,14 @@ function RegisterComponent({
                         textStyle={{color: colours.white, fontSize: 15, textAlign: 'center'}} 
                         title='Submit' 
                     />
-                <View style={styles.registertext}>
-                    <Text> Already have an account ? </Text>
-                    <TouchableOpacity onPress={() => navigate(routes.LOGIN)}>
-                        <Text style={styles.registerlink}> Login </Text>
-                    </TouchableOpacity>
-                </View>
-                </View>
+
+                    <View style={styles.registertext}>
+                        <Text> Already have an account ? </Text>
+                        <TouchableOpacity onPress={() => navigate(routes.LOGIN)}>
+                            <Text style={styles.registerlink}> Login </Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>                
             </View>
         </Container>
     );

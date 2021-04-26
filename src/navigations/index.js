@@ -8,7 +8,6 @@ import { GlobalContext } from '../context/reducers/Providers';
 
 const AppNavContainer = (props) => {
     const { authState: { isLoggedIn } } = useContext(GlobalContext);
-    console.log('state is ', isLoggedIn);
 
     return (
         <NavigationContainer>
