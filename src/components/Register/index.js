@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import env from '../../config/env';
 import colours from '../../assets/themes/colours';
@@ -14,8 +15,11 @@ function RegisterComponent({
     onChange,
     form,
     errors,
+    loading,
+    error
 }) {
     
+    const { navigate } = useNavigation();
     return (
         <Container>
 
@@ -26,36 +30,42 @@ function RegisterComponent({
                 <Text style={styles.subheader }> Please register here </Text>
 
                 <View>
+
+                    {
+                        error?.error &&
+                        <Text> {error.error} </Text>
+                    }
+
                     <Input
-                        error={errors.username}
+                        error={errors.username || error?.username?.[0]}
                         label='Username'
                         placeholder='Enter your username'
                         name='username'
                     />
 
                     <Input
-                        error={errors.lastname}
+                        error={errors.lastname || error?.last_name?.[0]}
                         label='Lastname'
                         placeholder='Enter your lastname'
                         name='lastname'
                     />
                     
                     <Input
-                        error={errors.firstname}
+                        error={errors.firstname || error?.first_name?.[0]}
                         label='Firstname'
                         placeholder='Enter your firstname'
                         name='firstname'
                     />
 
                     <Input
-                        error={errors.email}
+                        error={errors.email || error?.email?.[0]}
                         label='Email'
                         placeholder='Enter your email'
                         name='email'
                     />
 
                     <Input
-                        error={errors.password}
+                        error={errors.password || error?.password?.[0]}
                         icon={<Text>Show</Text>}
                         iconPosition='right'
                         label='Password'
@@ -65,7 +75,9 @@ function RegisterComponent({
                     />
 
                     <CustomButton
+                        disabled={loading}
                         onPress={onSubmit}
+                        loading={loading}
                         style={{backgroundColor: colours.primary, padding: 10, borderRadius: 5, marginTop: 10}} 
                         textStyle={{color: colours.white, fontSize: 15, textAlign: 'center'}} 
                         title='Submit' 
